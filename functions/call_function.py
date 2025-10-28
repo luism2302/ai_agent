@@ -3,14 +3,19 @@ from functions.get_files_info import get_files_info
 from functions.get_file_content import get_file_content
 from functions.run_python_file import run_python_file
 from functions.write_file import write_file
+from functions.config import WORKING_DIR
+
 def call_function(function_call_part, verbose = False):
 	function_name = function_call_part.name
 	function_args = function_call_part.args
 	
 	if verbose:
 		print(f"Calling function: {function_name}({function_args})")
+	else:
+		print(f"Calling function: {function_name}")
 
-	function_args['working_directory'] = './calculator'
+
+	function_args['working_directory'] = WORKING_DIR
 
 	available_funcs = {
 		"get_files_info": get_files_info,
